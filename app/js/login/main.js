@@ -7,7 +7,7 @@ require('angular');
 
 var login = angular.module('login', []);
 
-require('./controllers/LoginCtrl.js');
+require('./controllers/LoginCtrl');
 
 login.config(function($locationProvider) {
     $locationProvider.html5Mode(false);

@@ -1,2 +1,2 @@
 # angular-quickstart
-angular quick start with fis
+angular fis-yang quick start

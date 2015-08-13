@@ -1,0 +1,28 @@
+{
+  "name": "angular-fisy-demo",
+  "version": "1.0.0",
+  "description": "angular fis-yang demo",
+  "main": "fis-conf.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ymyang/angular-fisy-demo.git"
+  },
+  "keywords": [
+    "angulr",
+    "fis",
+    "fisy",
+    "fis-yang"
+  ],
+  "author": "ymyang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ymyang/angular-fisy-demo/issues"
+  },
+  "homepage": "https://github.com/ymyang/angular-fisy-demo#readme",
+  "devDependencies": {
+    "fis-yang": "^1.0.0"
+  }
+}

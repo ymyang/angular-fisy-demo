@@ -63,9 +63,9 @@ var require, define;
         var url;
 
         if (pkg) {
-            url = pkgMap[pkg].url;
+            url = pkgMap[pkg].uri;
         } else {
-            url = res.url || id;
+            url = res.uri || id;
         }
 
         createScript(url, onerror && function() {
@@ -122,6 +122,9 @@ var require, define;
         }
         return mod.exports;
     };
+    require.amd = true;
+    require.resMap = resMap;
+    require.pkgMap = pkgMap;
 
     require.async = function(names, onload, onerror) {
         if (typeof names == 'string') {

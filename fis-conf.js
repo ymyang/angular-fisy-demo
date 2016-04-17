@@ -3,6 +3,12 @@ fis.set('prefix', 'app/');
 fis.hook('module', {
     mode: 'mod'
 });
+// require.js
+//fis.hook('amd');
+// sed.js
+//fis.hook('cmd');
+//mod.js
+//fis.hook('commonjs');
 
 fis.match('*', {
     relative: false,
@@ -24,10 +30,10 @@ fis.match('*', {
         isMod: true,
         id: '$1',
         release: '${prefix}/$&',
-        postprocessor: fis.plugin('jswrapper', {
-            type: 'amd',
-            wrapAll: true
-        })
+        //postprocessor: fis.plugin('jswrapper', {
+        //    type: 'amd',
+        //    wrapAll: true
+        //})
     })
     .match('/app/js/(**).js', {
         isMod: true,
@@ -35,10 +41,10 @@ fis.match('*', {
         //useHash: true,
         id: '$1',
         release: '${prefix}/$&',
-        postprocessor: fis.plugin('jswrapper', {
-            type: 'amd',
-            wrapAll: true
-        })
+        //postprocessor: fis.plugin('jswrapper', {
+        //    type: 'amd',
+        //    wrapAll: true
+        //})
     })
     .match('/app/css/**.less', {
         rExt: '.css',

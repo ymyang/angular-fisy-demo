@@ -40,27 +40,27 @@ fis.match('*', {
             wrapAll: true
         })
     })
-    .match('/app/css/**.{css,less}', {
-        release: '${prefix}/$&'
-    })
     .match('/app/css/**.less', {
         rExt: '.css',
         parser: fis.plugin('less')
     })
+    .match('/app/css/**.{css,less}', {
+        release: '${prefix}/$&'
+    })
     .match('/app/css/fonts/*.*', {
         release: '${prefix}/$&'
     })
-    .match('/app/pages/(*.html)', {
+    .match('/app/pages/(login.html)', {
         useCache: false,
         release: '${prefix}/$1'
     });
 
-fis.match('::packager', {
+fis.match('::package', {
     // npm install [-g] fis3-postpackager-loader
-    // ·ÖÎö __RESOURCE_MAP__ ½á¹¹£¬À´½â¾ö×ÊÔ´¼ÓÔØÎÊÌâ
+    // åˆ†æ __RESOURCE_MAP__ ç»“æ„ï¼Œæ¥è§£å†³èµ„æºåŠ è½½é—®é¢˜
     postpackager: fis.plugin('loader', {
         resourceType: 'mod',
-        useInlineMap: true // ×ÊÔ´Ó³Éä±íÄÚÇ¶
+        useInlineMap: true // èµ„æºæ˜ å°„è¡¨å†…åµŒ
     }),
     packager: fis.plugin('map'),
     spriter: fis.plugin('csssprites', {
@@ -90,9 +90,9 @@ fis.media('prod')
         useSprite: true,
         useHash: true,
         optimizer: fis.plugin('clean-css'),
-        packTo: '/pkg/style.css'
+        packTo: '/pkg/style.min.css'
     })
-    .match('/app/css/fonts/*.*', {
+    .match('/app/css/fonts/(*.*)', {
         useHash: true,
         release: '${prefix}/fonts/$1'
     }).match('/pkg/(*.js)', {

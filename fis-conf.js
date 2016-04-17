@@ -1,9 +1,7 @@
 fis.config.set("project.watch.usePolling", true);
 fis.set('prefix', 'app/');
-//fis.hook('relative');
-//fis.hook('cmd');
 fis.hook('module', {
-    mode: 'amd' // 模块化支持 amd 规范，适应 require.js
+    mode: 'mod'
 });
 
 fis.match('*', {
@@ -75,24 +73,32 @@ fis.media('prod')
     .match('/app/libs/**.js', {
         useHash: true,
         optimizer: fis.plugin('uglify-js'),
-        //packTo: '/js/libs.min.js'
+        packTo: '/pkg/libs.min.js'
     })
     .match('/app/components/**.js', {
         useHash: true,
         optimizer: fis.plugin('uglify-js'),
-        //packTo: '/js/components.min.js'
+        packTo: '/pkg/components.min.js'
     })
     .match('/app/js/(*)/**.js', {
         useHash: true,
         preprocessor: fis.plugin('annotate'),
         optimizer: fis.plugin('uglify-js'),
-        //packTo: '/js/$1.min.js'
+        packTo: '/pkg/$1.min.js'
     })
     .match('/app/css/**.{css,less}', {
         useSprite: true,
         useHash: true,
-        optimizer: fis.plugin('clean-css')
+        optimizer: fis.plugin('clean-css'),
+        packTo: '/pkg/style.css'
     })
     .match('/app/css/fonts/*.*', {
-        useHash: true
+        useHash: true,
+        release: '${prefix}/fonts/$1'
+    }).match('/pkg/(*.js)', {
+        useHash: true,
+        release: '${prefix}/js/$1'
+    }).match('/pkg/(*.css)', {
+        useHash: true,
+        release: '${prefix}/css/$1'
     });
